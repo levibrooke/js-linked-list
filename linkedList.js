@@ -43,6 +43,7 @@ function linkedListGenerator(){
     
     // when list is not empty, append new node
     if (head !== null) {
+      tail.next = node;
       tail = node;
       return node;
     }
@@ -60,7 +61,7 @@ function linkedListGenerator(){
 
     let current = head;
     let index = 0;
-
+    
     while (current !== null) {
       if (index === num) {
         return current;
@@ -69,7 +70,8 @@ function linkedListGenerator(){
         current = current.next;
       }
     }
-    return current;
+    // if current === null return false
+    return false;
   };
 
   // remove(number)
