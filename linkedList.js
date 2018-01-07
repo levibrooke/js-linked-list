@@ -32,7 +32,7 @@ function linkedListGenerator(){
   function add(value) {
     
     // create a new node
-    let node = new newNode(value);
+    let node = newNode(value);
 
     // when list is empty, assign first node to head and tail
     if (head === null) {
@@ -75,12 +75,56 @@ function linkedListGenerator(){
   };
 
   // remove(number)
-  function remove() {
+  function remove(num) {
 
+    // find the node you are searching for
+    // keep track of previous node
+    // when found, update previous node's .next to point to the .next of the node to the right of target node
+    // delete target
+
+    let current = head;
+    let index = 0;
+    let previous = null;
+
+    while (current !== null) {    
+      if (num === index) {
+        
+        // node is head
+        if (num === 0) {
+          head = head.next;
+        }
+
+        // node is tail
+        else if (current.next === null) {
+          previous.next = null;
+          tail = previous;
+        }
+
+        // node is somewhere in between
+        else {
+          previous.next = current.next;
+        }
+      }
+        previous = current;
+        current = current.next;
+        index++;
+    }
+    return false;
   };
 
   // insert(value, number)
-  function insert() {
+  function insert(value, number) {
+    // find the position in list where you want to insert new node after (index node)
+    // update the .next of new node to point to the node to right
+    // update .next of the index node to point to new node
+
+    let node = newNode(value);
+    let get = get(number);
+    let getPrevious = get(number - 1);
+  
+    node.next = get;
+    getPrevious.next = node;
+    
 
   };
 
