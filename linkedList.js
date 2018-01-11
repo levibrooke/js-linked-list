@@ -113,19 +113,31 @@ function linkedListGenerator(){
   };
 
   // insert(value, number)
-  function insert(value, number) {
+  function insert(value, index) {
     // find the position in list where you want to insert new node after (index node)
     // update the .next of new node to point to the node to right
     // update .next of the index node to point to new node
 
     let node = newNode(value);
-    let get = get(number);
-    let getPrevious = get(number - 1);
-  
-    node.next = get;
-    getPrevious.next = node;
-    
+    let current = get(index);
+    let getPrevious = get(index - 1);
 
+    // if empty or larger than list's length
+    if (current === false) {
+      return false;
+    }
+
+    // if index is head
+    else if (index === 0) {
+      node.next = current;
+      return head = node;
+    } 
+    
+    // else
+    else {
+      node.next = current;
+      return getPrevious.next = node;
+    }
   };
 
   return {
